@@ -1,0 +1,41 @@
+body {
+  background-image: url("../header.jpg"); }
+
+#searchInput {
+  margin-top: 10px; }
+
+button {
+  width: 100%; }
+
+.rightNav {
+  height: 30px;
+  margin-top: 8px;
+  border-style: none;
+  background-color: lightgrey;
+  border-radius: 5px; }
+  .rightNav #rightButton {
+    margin-right: 10px; }
+  .rightNav #fave {
+    margin-right: 20px; }
+
+table {
+  border: 2px solid black;
+  background-color: white;
+  margin: 0 auto; }
+
+th {
+  color: black;
+  background-color: white;
+  border: 1px solid black; }
+
+td {
+  border: 1px solid black;
+  background-color: white; }
+
+.hidden {
+  display: none; }
+
+#favorites {
+  margin: 0 auto; }
+
+/*# sourceMappingURL=style.css.map */
