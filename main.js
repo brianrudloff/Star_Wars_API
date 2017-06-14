@@ -55,6 +55,7 @@ $('#search').submit(function() {
 
       let result = data.results[0];
       $('#table').append(`<tr id='1tableHeader'></tr>`)
+      $('#1tableHeader').append(`<th>Favorite?</th>`)
       Object.keys(result).forEach(function(ele){
         $('#1tableHeader').append(`<th>${ele}</th>`)
       })
@@ -62,10 +63,11 @@ $('#search').submit(function() {
         $('#table').append('<tr></tr>')
         console.log('ele', ele)
         let resultArr = Object.keys(ele);
+        $('tr').last().append(`<button>Favorite</button>`)
         for (let i = 0; i < resultArr.length; i += 1) {
           let temp = resultArr[i];
           let tempVal = ele[resultArr[i]];
-          $('tr').last().append(`<th>${tempVal}</tr>`);
+          $('tr').last().append(`<td>${tempVal}</td>`);
         }
       })
     })
