@@ -1,52 +1,125 @@
 body {
-  background-image: url('../header.jpg')
+  background-image: url('../header.jpg');
+  color: white !important;
+}
+
+input {
+  border-radius: 5px;
+  color: #938288 !important;
+  width: 90%;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #00236D;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #00236D;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #00236D;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #00236D;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    #00236D;
+}
+
+
+
+input:focus {
+    outline:none;
 }
 
 #searchInput {
   margin-top: 10px;
+  border-radius: 5px;
 }
 
 button {
-  width: 100%;
+  outline: none;
 }
 
-.rightNav {
-  height: 30px;
-  margin-top: 8px;
-  border-style: none;
-  background-color: lightgrey;
-  border-radius: 5px;
+.navbar {
+  background-color: #E5E5EC !important;
+  border-radius: 0px !important;
 
-  #rightButton {
-    margin-right: 10px;
+  .navbar-brand {
+    color: #00236D !important;
   }
 
-  #fave {
-    margin-right: 20px;
+  .dropdown-menu {
+  background-color: #938288;
+ }
+
+  .dropButton {
+    background-color: #938288;
+    color: black;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid black;
+    width: 100%;
   }
+  .rightNav {
+    height: 30px;
+    margin-top: 8px;
+    border-style: none;
+    background-color: #00236D;
+    color: white;
+    border-radius: 5px;
 
-  #displayFaves {
+    #rightButton {
+      margin-right: 10px;
+    }
 
+    #fave {
+      margin-right: 20px;
+    }
   }
 }
-
 
 table {
-  border: 2px solid black;
+  color: black;
+  border: 1px solid black;
   background-color: white;
   margin: 0 auto;
+  max-width: 960px;
+  white-space: normal;   
+  word-wrap: break-word;
+  width: 100%;
+  .faveButton {
+    background-color: white;
+    border: none;
+  }
+  label {
+    color: white !important;
+  }
+}
+
+#table_wrapper {
+ width: 80%;
+ margin: 0 auto;
 }
 
 th {
-  color: black;
-  background-color: white;
+  background-color: #E5E5EC;
   border: 1px solid black;
+  padding: 2px;
+  text-align: center !important;
 }
 
 td {
   border: 1px solid black;
-    background-color: white;
+  background-color: #E5E5EC;
+  padding: 2px;
+  text-align: center;
 }
+
+
+
 
 .hidden {
   display: none;
