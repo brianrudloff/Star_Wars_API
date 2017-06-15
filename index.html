@@ -7,73 +7,47 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
 
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand">Star Wars API</a>
-    </div>
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand">Star Wars API</a>
+      </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources<span class="caret"></span></a>
-          <ul style='background-color: #938288' class="dropdown-menu">
-            <li><button class='dropButton' id='filmsButton'>Films</button></li>
-            <li><button class='dropButton' id='peopleButton'>People</button></li>
-            <li><button class='dropButton' id='planetsButton'>Planets</button></li>
-            <li><button class='dropButton' id='speciesButton'>Species</button></li>
-            <li><button class='dropButton' id='starshipsButton'>Starships</button></li>
-            <li><button class='dropButton' id='vehiclesButton' style='border-bottom: none'>Vehicles</button></li>
-          </ul>
-        </li>
-        <li id='searchInput'> 
-          <form id='search'>
-            <input placeholder="Search..." id='input'></input>
-          </form>
-        </li>
-      </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li><button class='rightNav' id="displayFaves">Display Favorites</button></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-
-
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources<span class="caret"></span></a>
+            <ul style='background-color: #938288' class="dropdown-menu">
+              <li><button class='dropButton' id='filmsButton'>Films</button></li>
+              <li><button class='dropButton' id='peopleButton'>People</button></li>
+              <li><button class='dropButton' id='planetsButton'>Planets</button></li>
+              <li><button class='dropButton' id='speciesButton'>Species</button></li>
+              <li><button class='dropButton' id='starshipsButton'>Starships</button></li>
+              <li><button class='dropButton' id='vehiclesButton' style='border-bottom: none'>Vehicles</button></li>
+            </ul>
+          </li>
+          <li id='searchInput'> 
+            <form id='search'>
+              <input placeholder="Search..." id='input'></input>
+            </form>
+          </li>
+        </ul>
+        
+        <ul class="nav navbar-nav navbar-right">
+          <li><button class='rightNav' id="displayFaves">Display Favorites</button></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
 
   <div id='main'>
-    <!--<table id="table">
-    </table>-->
     <table id="table" class="display hidden" cellspacing="0" width="90%">
-        <!--<thead>
-            <tr>
-                <th style='text-align: center'>Name</th>
-                <th>Starship Class</th>
-                <th>Model</th>
-                <th>Manufacturer</th>
-                <th>Passengers</th>
-                <th>Favorite</th>
-            </tr>
-        </thead>
-
-        <tfoot>
-            <tr>
-                <th>Name</th>
-                <th>Starship Class</th>
-                <th>Model</th>
-                <th>Manufacturer</th>
-                <th>Passengers</th>
-                <th>Favorite</th>
-            </tr>
-        </tfoot>-->
     </table>
   </div>
 
