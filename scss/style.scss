@@ -90,14 +90,16 @@ table {
   white-space: normal;   
   word-wrap: break-word;
   width: 100%;
-  .faveButton {
+  .saveButton {
     background-color: white;
     border: none;
+    border-radius: 5px;
   }
   label {
     color: white !important;
   }
 }
+
 
 #table_wrapper {
  width: 80%;
@@ -117,7 +119,6 @@ td {
   padding: 2px;
   text-align: center;
 }
-
 
 
 

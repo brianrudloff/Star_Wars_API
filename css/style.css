@@ -75,9 +75,10 @@ table {
   white-space: normal;
   word-wrap: break-word;
   width: 100%; }
-  table .faveButton {
+  table .saveButton {
     background-color: white;
-    border: none; }
+    border: none;
+    border-radius: 5px; }
   table label {
     color: white !important; }
 

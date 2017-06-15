@@ -1,5 +1,6 @@
 console.log("working?")
 
+//Initialize default values for variables
 let resource = "films";
 
 tr1 = 'Title';
@@ -14,6 +15,7 @@ key3 = 'producer';
 key4 = 'episode_id';
 key5 = 'release_date';
 
+//re-assign variables on resource selection
 $('#filmsButton').click(function(){
   resource = "films";
   tr1 = 'Title';
@@ -100,10 +102,14 @@ $('#peopleButton').click(function(){
 
 $('#search').submit(function() {
   event.preventDefault();
+
+  //if statements to clear table for reload
   if ($('#table').children().length > 0) {
     $('#table').DataTable().destroy();
     $('#table').empty();
   }
+
+  //first append 
   $('#table').append(
     `<thead>
       <tr>
@@ -126,7 +132,10 @@ $('#search').submit(function() {
       </tr>
   </tfoot>`)
 
+  //make table visible
   $('#table').removeClass('hidden');
+
+  //AJAX call to api
   const $inputs = $('#search :input');
   let $url = "https://swapi.co/api/" + resource + "/?search=" + $inputs[0].value;
   currUrl = $url;
@@ -142,7 +151,7 @@ $('#search').submit(function() {
         { data: key3 },
         { data: key4 },
         { data: key5 },
-        { defaultContent: '<button>Save</button>' }
+        { defaultContent: '<button class="saveButton">Save</button>' }
     ],
   });
   $("#input").val("");
