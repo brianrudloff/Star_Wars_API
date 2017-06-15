@@ -150,6 +150,10 @@ $('#search').submit(function() {
 
 
 
+
+
+//OLD CODE FOR DISPLAYING TABLE WITHOUT BOOTSTRAP
+
 // $('#search').submit(function() {
 //   event.preventDefault();
 //     const $inputs = $('#search :input');
@@ -191,36 +195,36 @@ $('#search').submit(function() {
 //     $("#input").val("");
 // });
 
-$('#fave').click(function(){
-  favorites.push(currUrl);
-  console.log('faves', favorites)
-})
+// $('#fave').click(function(){
+//   favorites.push(currUrl);
+//   console.log('faves', favorites)
+// })
 
-$('#displayFaves').click(function() {
-  event.preventDefault();
-    let $url = favorites[0];
-    console.log('url', $url)
-      $.ajax({
-    url: $url,
-    datatype: 'JSONP'
-  })
-    .done(function(data) {
-      // $('tr').remove();
-      // $('td').remove();
-      console.log(data);
-      let result = data.results[0];
-      let resultArr = Object.keys(result);
-      $('#favesHeader').removeClass('hidden');
-      for (let i = 0; i < resultArr.length; i += 1) {
-        let temp = resultArr[i];
-        let tempVal = result[resultArr[i]];
-        $('#favorites').append(`<tr><td>${temp}</td><td>${tempVal}</td></tr>`);
-      }
-    })
-    .fail(function(data) {
-      console.log('error', data)
-      let $error = $('<p>', { text: 'Error' });
-        $('#table').append($error)
-    })
-    $("#input").val("");
-});
+// $('#displayFaves').click(function() {
+//   event.preventDefault();
+//     let $url = favorites[0];
+//     console.log('url', $url)
+//       $.ajax({
+//     url: $url,
+//     datatype: 'JSONP'
+//   })
+//     .done(function(data) {
+//       // $('tr').remove();
+//       // $('td').remove();
+//       console.log(data);
+//       let result = data.results[0];
+//       let resultArr = Object.keys(result);
+//       $('#favesHeader').removeClass('hidden');
+//       for (let i = 0; i < resultArr.length; i += 1) {
+//         let temp = resultArr[i];
+//         let tempVal = result[resultArr[i]];
+//         $('#favorites').append(`<tr><td>${temp}</td><td>${tempVal}</td></tr>`);
+//       }
+//     })
+//     .fail(function(data) {
+//       console.log('error', data)
+//       let $error = $('<p>', { text: 'Error' });
+//         $('#table').append($error)
+//     })
+//     $("#input").val("");
+// });
