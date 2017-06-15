@@ -101,8 +101,8 @@ $('#peopleButton').click(function(){
 $('#search').submit(function() {
   event.preventDefault();
   if ($('#table').children().length > 0) {
-    console.log('head')
-  $('#table').DataTable().clear();
+    $('#table').DataTable().destroy();
+    $('#table').empty();
   }
   $('#table').append(
     `<thead>
