@@ -138,6 +138,31 @@ td {
 
 #favorites {
   margin: 0 auto;
+  padding-top: 40px;
+  h2 {
+    color: white;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  #faveHead {
+    width: 100%;
+    height: 30px;
+  }
+
+  #faveHeader {
+    width: 200px;
+  }
+  #faveClose {
+    float: right;
+    display: inline-block;
+    background-color: transparent;
+    border-style: none;
+    margin-top: -30px;
+    font-size: 20px;
+    z-index: 100;
+    padding-right: 20px;
+  }
 }
 
 #faveList {
@@ -150,19 +175,31 @@ td {
 }
 
 .flexEle {
-  width: 400px;
+  width: 350px;
   height: 200px;
-  margin: 10px 30px;
+  margin: 10px 20px;
   .lastTable {
-    width: 60%;
+    width: 100%;
     float: left;
+    height: 100%;
+    font-size: 14px;
   }
 }
 
 textarea {
-  display: inline-block;
-  float: right;
   color: #00236D !important;
-  vertical-align: middle;
   height: 100% !important;
+  width: 100%;
 }
+
+.leftDiv {
+  float: left;
+  width:60%
+}
+
+.rightDiv {
+  float: right;
+  width: 40%;
+}
+
+

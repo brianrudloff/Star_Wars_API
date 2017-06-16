@@ -187,12 +187,15 @@ $('#table').on( 'click', '.saveButton', function (e) {
     })
 } );
 
+//GET request to favorites in database
 $('#displayFaves').click(function(){
+  $('#favorites').prepend(`<div id='faveHead'><h2 id='faveHeader'>Favorites</h2><button id='faveClose'>X</button></div><br>`);
   $.get('/starwars', function(data, status) {
     console.log(data)
     data.forEach(function(ele) {
       let arr = Object.keys(ele);
-      $('#faveList').append(`<div class='flexEle'><div class='leftDiv'><table class='lastTable'></table></div><div class='rightDiv'<textarea placeholder:'Notes...'></textarea></div></div>`)
+      console.log('in array')
+      $('#faveList').append(`<div class='flexEle'><div class='leftDiv'><table class='lastTable'></table></div><div class='rightDiv'><textarea placeholder='Notes...'></textarea></div></div>`)
       for (let i = 1; i < arr.length; i += 1) {
         let tempKey = arr[i];
         let tempVal = ele[arr[i]];
@@ -200,6 +203,13 @@ $('#displayFaves').click(function(){
       }
     })
   })
+})
+
+//REVMOVE FAVORITES
+$('#favorites').on( 'click', '#faveClose', function (e) {
+  $('#favorites').find('div').first().remove();
+  $('#favorites').find('br').first().remove();
+  $('#faveList').empty();
 })
 
 
