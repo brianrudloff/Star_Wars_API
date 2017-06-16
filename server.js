@@ -25,14 +25,30 @@ app.post('/starwars', function (req, res){
     if (err) throw err;
     res.send('New item added.')
   });
-  // starwars.insert(req.body, function(err, records){
-  //   console.log('record add', records)
-  // })
+});
+
+app.put('/starwars', function (req, res){
+  let keys = Object.keys(req.body);
+  let key = keys[0];
+  let val = req.body[key];
+  let upKey = keys[1];
+  let upVal = req.body[upKey];
+
+  let condition = {}
+  condition[key] = val;
+  
+  let update = {}
+  update[upKey] = upVal;
+  
+  SWSchema.update(condition, update, function(err, data){
+    if (err) throw err;
+     res.send('item updated')
+  })
 });
 
 app.get('/starwars', (req, res) => {
     SWSchema.find({}, (err, data) => {
-        if(err) console.log(err);
+        if (err) throw err;
         res.json(data)
     })
 })

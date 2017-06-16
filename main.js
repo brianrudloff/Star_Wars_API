@@ -1,23 +1,23 @@
-console.log("working?")
+console.log('working?');
 
-//Initialize default values for variables
-let resource = "films";
+//  Initialize default values for variables
+let resource = 'films';
 
-tr1 = 'Title';
-tr2 = 'Director';
-tr3 = 'Producers';
-tr4 = 'Episode';
-tr5 = 'Release Date';
+let tr1 = 'Title';
+let tr2 = 'Director';
+let tr3 = 'Producers';
+let tr4 = 'Episode';
+let tr5 = 'Release Date';
 
-key1 = 'title';
-key2 = 'director';
-key3 = 'producer';
-key4 = 'episode_id';
-key5 = 'release_date';
+let key1 = 'title';
+let key2 = 'director';
+let key3 = 'producer';
+let key4 = 'episode_id';
+let key5 = 'release_date';
 
-//re-assign variables on resource selection
-$('#filmsButton').click(function(){
-  resource = "films";
+//  re-assign variables on resource selection
+$('#filmsButton').click(() => {
+  resource = 'films';
   tr1 = 'Title';
   tr2 = 'Director';
   tr3 = 'Producers';
@@ -28,10 +28,10 @@ $('#filmsButton').click(function(){
   key3 = 'producer';
   key4 = 'episode_id';
   key5 = 'release_date';
-})
+});
 
-$('#planetsButton').click(function(){
-  resource = "planets";
+$('#planetsButton').click(() => {
+  resource = 'planets';
   tr1 = 'Name';
   tr2 = 'Terrain';
   tr3 = 'Climate';
@@ -42,10 +42,10 @@ $('#planetsButton').click(function(){
   key3 = 'climate';
   key4 = 'population';
   key5 = 'gravity';
-})
+});
 
-$('#speciesButton').click(function(){
-  resource = "species";
+$('#speciesButton').click(() => {
+  resource = 'species';
   tr1 = 'Name';
   tr2 = 'Language';
   tr3 = 'Classification';
@@ -56,10 +56,10 @@ $('#speciesButton').click(function(){
   key3 = 'classification';
   key4 = 'designation';
   key5 = 'average_lifespan';
-})
+});
 
-$('#starshipsButton').click(function(){
-  resource = "starships";
+$('#starshipsButton').click(() => {
+  resource = 'starships';
   tr1 = 'Name';
   tr2 = 'Starship Class';
   tr3 = 'Model';
@@ -70,10 +70,10 @@ $('#starshipsButton').click(function(){
   key3 = 'model';
   key4 = 'manufacturer';
   key5 = 'passengers';
-})
+});
 
-$('#vehiclesButton').click(function(){
-  resource = "vehicles";
+$('#vehiclesButton').click(() => {
+  resource = 'vehicles';
   tr1 = 'Name';
   tr2 = 'Vehicle Class';
   tr3 = 'Model';
@@ -84,10 +84,10 @@ $('#vehiclesButton').click(function(){
   key3 = 'model';
   key4 = 'manufacturer';
   key5 = 'cost_in_credits';
-})
+});
 
-$('#peopleButton').click(function(){
-  resource = "people";
+$('#peopleButton').click(() => {
+  resource = 'people';
   tr1 = 'Name';
   tr2 = 'Birth Year';
   tr3 = 'Gender';
@@ -98,18 +98,19 @@ $('#peopleButton').click(function(){
   key3 = 'gender';
   key4 = 'height';
   key5 = 'mass';
-})
+});
 
-$('#search').submit(function() {
+// submit search conditions
+$('#search').submit(() => {
   event.preventDefault();
 
-  //if statements to clear table for reload
+  //  conditional to clear table for reload
   if ($('#table').children().length > 0) {
     $('#table').DataTable().destroy();
     $('#table').empty();
   }
 
-  //first append 
+  //first append table headers and footers
   $('#table').append(
     `<thead>
       <tr>
@@ -120,8 +121,8 @@ $('#search').submit(function() {
           <th>${tr5}</th>
           <th>Favorite</th>
       </tr>
-  </thead>
-  <tfoot>
+    </thead>
+    <tfoot>
       <tr>
           <th>${tr1}</th>
           <th>${tr2}</th>
@@ -130,83 +131,109 @@ $('#search').submit(function() {
           <th>${tr5}</th>
           <th>Favorite</th>
       </tr>
-  </tfoot>`)
+    </tfoot>`);
 
-  //make table visible
-  $('#table').removeClass('hidden');
-
-  //AJAX call to api
-  const $inputs = $('#search :input');
-  let $url = "https://swapi.co/api/" + resource + "/?search=" + $inputs[0].value;
-  currUrl = $url;
-  console.log('url', $url)
+  //  AJAX call to api
+  let $inputs = $('#search :input');
+  let condition = $inputs[0].value;
+  let $url = `https://swapi.co/api/${resource}/?search=${condition}`;
   $('#table').DataTable( {
     ajax: {
-        url: $url,
-        dataSrc: 'results'
+      url: $url,
+      dataSrc: 'results',
     },
     columns: [
-        { data: key1 },
-        { data: key2 },
-        { data: key3 },
-        { data: key4 },
-        { data: key5 },
-        { defaultContent: '<button id="saver" class="saveButton">Save</button>' }
+      { data: key1 },
+      { data: key2 },
+      { data: key3 },
+      { data: key4 },
+      { data: key5 },
+      { defaultContent: '<button id="saver" class="saveButton">Save</button>' },
     ],
   });
-  $("#input").val("");
-})
+  $('#input').val('');
+});
 
 //save button functionality
-$('#table').on( 'click', '.saveButton', function (e) {
-  let row = $(this).closest("tr");
+$('#table').on( 'click', '.saveButton', (e) => {
+  let row = $(this).closest('tr');
   let rowsData = $('#table').DataTable().row(row).data();
 
-  let sendObj = {}
-  sendObj[key1] = rowsData[key1]
-  sendObj[key2] = rowsData[key2]
-  sendObj[key3] = rowsData[key3]
-  sendObj[key4] = rowsData[key4]
-  sendObj[key5] = rowsData[key5]
+  let sendObj = {};
+  sendObj[key1] = rowsData[key1];
+  sendObj[key2] = rowsData[key2];
+  sendObj[key3] = rowsData[key3];
+  sendObj[key4] = rowsData[key4];
+  sendObj[key5] = rowsData[key5];
 
-  console.log('sendobj', sendObj)
+  console.log('Object to send', sendObj);
 
     $.ajax({
       method: 'POST',
       url: '/starwars',
       data: sendObj,
-      success: function(result) {
+      success: (result) => {
         console.log('this is result', result);
       },
-      error: function(xhr, text, err) {
-        console.log('error: ',err);
+      error: (xhr, text, err) => {
+        console.log('error: ', err);
         console.log('text: ', text);
-        console.log('xhr: ',xhr);
-        console.log("there is a problem whit your request, please check ajax request");
-    }
-    })
-} );
+        console.log('xhr: ', xhr);
+        console.log('There is a problem whit your request, please check ajax request');
+      },
+    });
+});
 
 //GET request to favorites in database
-$('#displayFaves').click(function(){
+$('#displayFaves').click(() => {
   $('#favorites').prepend(`<div id='faveHead'><h2 id='faveHeader'>Favorites</h2><button id='faveClose'>X</button></div><br>`);
-  $.get('/starwars', function(data, status) {
-    console.log(data)
-    data.forEach(function(ele) {
+  $.get('/starwars', (data, status) => {
+    data.forEach((ele) => {
       let arr = Object.keys(ele);
-      console.log('in array')
-      $('#faveList').append(`<div class='flexEle'><div class='leftDiv'><table class='lastTable'></table></div><div class='rightDiv'><textarea placeholder='Notes...'></textarea></div></div>`)
+      $('#faveList').append(`<div class='flexEle'><div class='leftDiv'><table class='lastTable'></table></div><div class='rightDiv'><form class='textareaForm'><textarea class='notes' placeholder='Notes...'></textarea><a id='textareaSave'>Save</a></form></div></div>`);
       for (let i = 1; i < arr.length; i += 1) {
         let tempKey = arr[i];
         let tempVal = ele[arr[i]];
-        $('.lastTable').last().append(`<tr><td>${tempKey}</td><td>${tempVal}</td></tr>`)
+        $('.lastTable').last().append(`<tr><td>${tempKey}</td><td>${tempVal}</td></tr>`);
       }
-    })
+    });
+  });
+});
+
+
+//Save notes
+$('#favorites').on( 'click', '#textareaSave', (e) => {
+  let note = $(this).parent().find(".notes").val();
+  let arr = $(this).parent().parent().parent().find('td');
+  let key = arr[0].innerText;
+  let val = arr[1].innerText;
+
+  let noteObj = {};
+  noteObj[key] = val;
+  noteObj['notes'] = note;
+
+  console.log('Note object to send', noteObj)
+
+  $.ajax({
+  method: 'PUT',
+  url: '/starwars',
+  data: noteObj,
+  success: (result) => {
+    console.log('this is result', result);
+  },
+  error: (xhr, text, err) => {
+    console.log('error: ',err);
+    console.log('text: ', text);
+    console.log('xhr: ',xhr);
+    console.log("there is a problem whit your request, please check ajax request");
+   }
   })
 })
 
-//REVMOVE FAVORITES
-$('#favorites').on( 'click', '#faveClose', function (e) {
+
+
+//REMOVE FAVORITES
+$('#favorites').on( 'click', '#faveClose', (e) => {
   $('#favorites').find('div').first().remove();
   $('#favorites').find('br').first().remove();
   $('#faveList').empty();
