@@ -155,7 +155,7 @@ $('#search').submit(() => {
 });
 
 //save button functionality
-$('#table').on( 'click', '.saveButton', (e) => {
+$('#table').on( 'click', '.saveButton', function(e) {
   let row = $(this).closest('tr');
   let rowsData = $('#table').DataTable().row(row).data();
 
@@ -186,11 +186,14 @@ $('#table').on( 'click', '.saveButton', (e) => {
 
 //GET request to favorites in database
 $('#displayFaves').click(() => {
+  if ($('#favorites').children().length > 1) {
+    return false;
+  }
   $('#favorites').prepend(`<div id='faveHead'><h2 id='faveHeader'>Favorites</h2><button id='faveClose'>X</button></div><br>`);
   $.get('/starwars', (data, status) => {
     data.forEach((ele) => {
       let arr = Object.keys(ele);
-      $('#faveList').append(`<div class='flexEle'><div class='leftDiv'><table class='lastTable'></table></div><div class='rightDiv'><form class='textareaForm'><textarea class='notes' placeholder='Notes...'></textarea><a id='textareaSave'>Save</a></form></div></div>`);
+      $('#faveList').append(`<div class='flexEle'><div class='leftDiv'><table class='lastTable'></table></div><div class='rightDiv'><form class='textareaForm'><textarea class='notes' placeholder='Notes...'></textarea><a class='textSave' id='textareaSave'>Save Notes</a></form></div></div>`);
       for (let i = 1; i < arr.length; i += 1) {
         let tempKey = arr[i];
         let tempVal = ele[arr[i]];
@@ -202,7 +205,7 @@ $('#displayFaves').click(() => {
 
 
 //Save notes
-$('#favorites').on( 'click', '#textareaSave', (e) => {
+$('#favorites').on( 'click', '#textareaSave', function(e) {
   let note = $(this).parent().find(".notes").val();
   let arr = $(this).parent().parent().parent().find('td');
   let key = arr[0].innerText;
@@ -215,29 +218,27 @@ $('#favorites').on( 'click', '#textareaSave', (e) => {
   console.log('Note object to send', noteObj)
 
   $.ajax({
-  method: 'PUT',
-  url: '/starwars',
-  data: noteObj,
-  success: (result) => {
-    console.log('this is result', result);
-  },
-  error: (xhr, text, err) => {
-    console.log('error: ',err);
-    console.log('text: ', text);
-    console.log('xhr: ',xhr);
-    console.log("there is a problem whit your request, please check ajax request");
-   }
+    method: 'PUT',
+    url: '/starwars',
+    data: noteObj,
+    success: (result) => {
+      console.log('this is result', result);
+    },
+    error: (xhr, text, err) => {
+      console.log('error: ',err);
+      console.log('text: ', text);
+      console.log('xhr: ',xhr);
+      console.log("there is a problem whit your request, please check ajax request");
+    }
   })
 })
-
-
 
 //REMOVE FAVORITES
 $('#favorites').on( 'click', '#faveClose', (e) => {
   $('#favorites').find('div').first().remove();
   $('#favorites').find('br').first().remove();
   $('#faveList').empty();
-})
+});
 
 
 

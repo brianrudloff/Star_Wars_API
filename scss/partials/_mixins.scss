@@ -1,0 +1,14 @@
+@mixin no-outline {
+  outline: none;
+}
+
+@mixin rounded {
+  border-radius: 5px;
+}
+
+@mixin td-standard {
+  background-color: $droid-covering;
+  border: 1px solid black;
+  padding: 2px;
+  text-align: center !important;
+}
