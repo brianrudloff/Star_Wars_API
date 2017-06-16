@@ -134,6 +134,7 @@ table {
 
 .row {
   background-color: $r2d2-secondary !important;
+  overflow: auto !important;
 
   &:first-of-type {
     padding-top: 8px;
@@ -200,10 +201,11 @@ td {
   .flexEle {
   @include rounded;
   width: 350px;
-  height: 200px;
+  height: 210px;
   margin: 10px 20px;
   background-color: $r2d2-secondary !important; 
   padding: 10px;
+  overflow: hidden;
 
     .lastTable {
       width: 100%;
@@ -214,18 +216,22 @@ td {
 
     .leftDiv {
       float: left;
-      width:60%
+      width:60%;
+      overflow: auto; 
+      height: 180px;
     }
 
     .rightDiv {
       float: right;
       width: 40%;
+      overflow: auto; 
+      height: 180px;
 
       textarea {
         color: $r2d2-main !important;
-        height: 90% !important;
+        height: 155px !important;
         width: 100%;
-        padding-bottom: 5px;
+        margin-bottom: 5px;
         resize: none;
       }
 
@@ -233,7 +239,7 @@ td {
         @include rounded;
         width: 100%;
         text-align: center;
-        margin-left: 30px;
+        margin-left: 35%;
         margin-top: 10px;
         background-color: $droid-covering;
         padding: 2px 5px;

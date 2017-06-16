@@ -166,6 +166,8 @@ $('#table').on( 'click', '.saveButton', function(e) {
   sendObj[key4] = rowsData[key4];
   sendObj[key5] = rowsData[key5];
 
+  let name = rowsData[key1];
+
   console.log('Object to send', sendObj);
 
     $.ajax({
@@ -173,7 +175,7 @@ $('#table').on( 'click', '.saveButton', function(e) {
       url: '/starwars',
       data: sendObj,
       success: (result) => {
-        console.log('this is result', result);
+        alert(`Been saved, ${name} has.`);
       },
       error: (xhr, text, err) => {
         console.log('error: ', err);
@@ -193,7 +195,7 @@ $('#displayFaves').click(() => {
   $.get('/starwars', (data, status) => {
     data.forEach((ele) => {
       let arr = Object.keys(ele);
-      $('#faveList').append(`<div class='flexEle'><div class='leftDiv'><table class='lastTable'></table></div><div class='rightDiv'><form class='textareaForm'><textarea class='notes' placeholder='Notes...'></textarea><a class='textSave' id='textareaSave'>Save Notes</a></form></div></div>`);
+      $('#faveList').append(`<div class='flexEle'><div class='leftDiv'><table class='lastTable'></table></div><div class='rightDiv'><form class='textareaForm'><textarea class='notes' placeholder='Notes...'></textarea><a class='textSave' id='textareaSave'>Save</a></form></div></div>`);
       for (let i = 1; i < arr.length; i += 1) {
         let tempKey = arr[i];
         let tempVal = ele[arr[i]];
@@ -222,7 +224,7 @@ $('#favorites').on( 'click', '#textareaSave', function(e) {
     url: '/update',
     data: noteObj,
     success: (result) => {
-      console.log('this is result', result);
+      alert('Been saved, your notes have.');
     },
     error: (xhr, text, err) => {
       console.log('error: ',err);

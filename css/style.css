@@ -105,7 +105,8 @@ table {
   margin: 0 auto; }
 
 .row {
-  background-color: #938288 !important; }
+  background-color: #938288 !important;
+  overflow: auto !important; }
   .row:first-of-type {
     padding-top: 8px;
     border-radius: 5px 5px 0px 0px; }
@@ -161,10 +162,11 @@ td {
   #faveList .flexEle {
     border-radius: 5px;
     width: 350px;
-    height: 200px;
+    height: 210px;
     margin: 10px 20px;
     background-color: #938288 !important;
-    padding: 10px; }
+    padding: 10px;
+    overflow: hidden; }
     #faveList .flexEle .lastTable {
       width: 100%;
       float: left;
@@ -172,21 +174,25 @@ td {
       font-size: 14px; }
     #faveList .flexEle .leftDiv {
       float: left;
-      width: 60%; }
+      width: 60%;
+      overflow: auto;
+      height: 180px; }
     #faveList .flexEle .rightDiv {
       float: right;
-      width: 40%; }
+      width: 40%;
+      overflow: auto;
+      height: 180px; }
       #faveList .flexEle .rightDiv textarea {
         color: #00236D !important;
-        height: 90% !important;
+        height: 155px !important;
         width: 100%;
-        padding-bottom: 5px;
+        margin-bottom: 5px;
         resize: none; }
       #faveList .flexEle .rightDiv .textSave {
         border-radius: 5px;
         width: 100%;
         text-align: center;
-        margin-left: 30px;
+        margin-left: 35%;
         margin-top: 10px;
         background-color: #E5E5EC;
         padding: 2px 5px; }
