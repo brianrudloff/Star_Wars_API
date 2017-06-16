@@ -10,7 +10,7 @@ mongoose.connect('mongodb://localhost:27017/starwars');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({  
-  extended: true;
+  extended: true
 }));
 
 app.use(express.static(__dirname));
@@ -29,7 +29,7 @@ app.post('/starwars', (req, res) => {
   });
 });
 
-app.put('/starwars', (req, res) => {
+app.post('/update', (req, res) => {
   let keys = Object.keys(req.body);
   let key = keys[0];
   let val = req.body[key];

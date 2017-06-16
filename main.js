@@ -218,8 +218,8 @@ $('#favorites').on( 'click', '#textareaSave', function(e) {
   console.log('Note object to send', noteObj)
 
   $.ajax({
-    method: 'PUT',
-    url: '/starwars',
+    method: 'POST',
+    url: '/update',
     data: noteObj,
     success: (result) => {
       console.log('this is result', result);
