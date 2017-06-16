@@ -151,13 +151,56 @@ $('#search').submit(function() {
         { data: key3 },
         { data: key4 },
         { data: key5 },
-        { defaultContent: '<button class="saveButton">Save</button>' }
+        { defaultContent: '<button id="saver" class="saveButton">Save</button>' }
     ],
   });
   $("#input").val("");
 })
 
+//save button functionality
+$('#table').on( 'click', '.saveButton', function (e) {
+  let row = $(this).closest("tr");
+  let rowsData = $('#table').DataTable().row(row).data();
 
+  let sendObj = {}
+  sendObj[key1] = rowsData[key1]
+  sendObj[key2] = rowsData[key2]
+  sendObj[key3] = rowsData[key3]
+  sendObj[key4] = rowsData[key4]
+  sendObj[key5] = rowsData[key5]
+
+  console.log('sendobj', sendObj)
+
+    $.ajax({
+      method: 'POST',
+      url: '/starwars',
+      data: sendObj,
+      success: function(result) {
+        console.log('this is result', result);
+      },
+      error: function(xhr, text, err) {
+        console.log('error: ',err);
+        console.log('text: ', text);
+        console.log('xhr: ',xhr);
+        console.log("there is a problem whit your request, please check ajax request");
+    }
+    })
+} );
+
+$('#displayFaves').click(function(){
+  $.get('/starwars', function(data, status) {
+    console.log(data)
+    data.forEach(function(ele) {
+      let arr = Object.keys(ele);
+      $('#faveList').append(`<div class='flexEle'><div class='leftDiv'><table class='lastTable'></table></div><div class='rightDiv'<textarea placeholder:'Notes...'></textarea></div></div>`)
+      for (let i = 1; i < arr.length; i += 1) {
+        let tempKey = arr[i];
+        let tempVal = ele[arr[i]];
+        $('.lastTable').last().append(`<tr><td>${tempKey}</td><td>${tempVal}</td></tr>`)
+      }
+    })
+  })
+})
 
 
 

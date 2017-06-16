@@ -1,0 +1,28 @@
+{
+  "name": "starwars_api",
+  "version": "1.0.0",
+  "description": "Star Wars API Project",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brianrudloff/Star_Wars_API.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brianrudloff/Star_Wars_API/issues"
+  },
+  "homepage": "https://github.com/brianrudloff/Star_Wars_API#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "bootstrap": "^3.3.7",
+    "express": "^4.15.3",
+    "jquery": "^3.2.1",
+    "mongodb": "^2.2.28",
+    "mongoose": "^4.10.6",
+    "nodemon": "^1.11.0"
+  }
+}

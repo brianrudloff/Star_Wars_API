@@ -74,13 +74,21 @@ table {
   max-width: 960px;
   white-space: normal;
   word-wrap: break-word;
-  width: 100%; }
+  width: 100%;
+  border-radius: 5px !important; }
   table .saveButton {
     background-color: white;
     border: none;
-    border-radius: 5px; }
+    border-radius: 5px;
+    margin: 2px; }
   table label {
     color: white !important; }
+
+#table_wrapper {
+  width: 70% !important; }
+
+.even {
+  background-color: #938288 !important; }
 
 #table_wrapper {
   width: 80%;
@@ -103,5 +111,28 @@ td {
 
 #favorites {
   margin: 0 auto; }
+
+#faveList {
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center; }
+
+.flexEle {
+  width: 400px;
+  height: 200px;
+  margin: 10px 30px; }
+  .flexEle .lastTable {
+    width: 60%;
+    float: left; }
+
+textarea {
+  display: inline-block;
+  float: right;
+  color: #00236D !important;
+  vertical-align: middle;
+  height: 100% !important; }
 
 /*# sourceMappingURL=style.css.map */
