@@ -218,18 +218,18 @@ td {
       float: left;
       width:60%;
       overflow: auto; 
-      height: 180px;
+      height: 190px;
     }
 
     .rightDiv {
       float: right;
       width: 40%;
       overflow: auto; 
-      height: 180px;
+      height: 190px;
 
       textarea {
         color: $r2d2-main !important;
-        height: 155px !important;
+        height: 162px !important;
         width: 100%;
         margin-bottom: 5px;
         resize: none;
@@ -239,8 +239,17 @@ td {
         @include rounded;
         width: 100%;
         text-align: center;
-        margin-left: 35%;
+        margin-left: 5%;
         margin-top: 10px;
+        background-color: $droid-covering;
+        padding: 2px 5px;
+      }
+      .delete {
+        @include rounded;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+        margin-left: 30%;
         background-color: $droid-covering;
         padding: 2px 5px;
       }

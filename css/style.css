@@ -176,15 +176,15 @@ td {
       float: left;
       width: 60%;
       overflow: auto;
-      height: 180px; }
+      height: 190px; }
     #faveList .flexEle .rightDiv {
       float: right;
       width: 40%;
       overflow: auto;
-      height: 180px; }
+      height: 190px; }
       #faveList .flexEle .rightDiv textarea {
         color: #00236D !important;
-        height: 155px !important;
+        height: 162px !important;
         width: 100%;
         margin-bottom: 5px;
         resize: none; }
@@ -192,8 +192,16 @@ td {
         border-radius: 5px;
         width: 100%;
         text-align: center;
-        margin-left: 35%;
+        margin-left: 5%;
         margin-top: 10px;
+        background-color: #E5E5EC;
+        padding: 2px 5px; }
+      #faveList .flexEle .rightDiv .delete {
+        border-radius: 5px;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+        margin-left: 30%;
         background-color: #E5E5EC;
         padding: 2px 5px; }
 

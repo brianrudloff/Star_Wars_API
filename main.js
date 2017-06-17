@@ -1,5 +1,3 @@
-console.log('working?');
-
 //  Initialize default values for variables
 let resource = 'films';
 
@@ -181,7 +179,7 @@ $('#table').on( 'click', '.saveButton', function(e) {
         console.log('error: ', err);
         console.log('text: ', text);
         console.log('xhr: ', xhr);
-        console.log('There is a problem whit your request, please check ajax request');
+        console.log('Lord Vader has force choked your ajax request');
       },
     });
 });
@@ -195,7 +193,7 @@ $('#displayFaves').click(() => {
   $.get('/starwars', (data, status) => {
     data.forEach((ele) => {
       let arr = Object.keys(ele);
-      $('#faveList').append(`<div class='flexEle'><div class='leftDiv'><table class='lastTable'></table></div><div class='rightDiv'><form class='textareaForm'><textarea class='notes' placeholder='Notes...'></textarea><a class='textSave' id='textareaSave'>Save</a></form></div></div>`);
+      $('#faveList').append(`<div class='flexEle'><div class='leftDiv'><table class='lastTable'></table></div><div class='rightDiv'><form class='textareaForm'><textarea class='notes' placeholder='Notes...'></textarea><a class='textSave' id='textareaSave'>Save</a><a class='delete'>X</a></form></div></div>`);
       for (let i = 1; i < arr.length; i += 1) {
         let tempKey = arr[i];
         let tempVal = ele[arr[i]];
@@ -230,10 +228,40 @@ $('#favorites').on( 'click', '#textareaSave', function(e) {
       console.log('error: ',err);
       console.log('text: ', text);
       console.log('xhr: ',xhr);
-      console.log("there is a problem whit your request, please check ajax request");
+      console.log('Lord Vader has force choked your ajax request');
     }
   })
 })
+
+// Remove favorite from database
+$('#favorites').on( 'click', '.delete', function(e) {
+  let arr = $(this).parent().parent().parent().find('td');
+ 
+  let key = arr[0].innerText;
+  let val = arr[1].innerText;
+
+  let dObj = {};
+  dObj[key] = val;
+
+  let name = dObj[key];
+  console.log('Object to delete', dObj)
+
+  $.ajax({
+    method: 'DELETE',
+    url: '/starwars',
+    data: dObj,
+    success: (result) => {
+      $(this).parent().parent().parent().parent().find('div').first().remove();
+      alert(`You've erased ${name} from the archive memory.`);
+    },
+    error: (xhr, text, err) => {
+      console.log('error: ',err);
+      console.log('text: ', text);
+      console.log('xhr: ',xhr);
+      console.log('Lord Vader has force choked your ajax request');
+    },
+  });
+});
 
 //REMOVE FAVORITES
 $('#favorites').on( 'click', '#faveClose', (e) => {

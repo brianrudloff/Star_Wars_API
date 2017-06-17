@@ -25,7 +25,7 @@ var SWSchema = mongoose.model('SWSchema', swSchema);
 app.post('/starwars', (req, res) => {
   SWSchema.create(new SWSchema(req.body), function(err, createdElement){
     if (err) throw err;
-    res.send('New item added.')
+    res.send('Post was added to the Jedi library.');
   });
 });
 
@@ -44,7 +44,14 @@ app.post('/update', (req, res) => {
 
   SWSchema.update(condition, update, (err, data) => {
     if (err) throw err;
-    res.send('item updated');
+    res.send('Jedi records have been updated.');
+  });
+});
+
+app.delete('/starwars', (req, res) => {
+  SWSchema.remove(req.body, (err, data) => {
+    if (err) throw err;
+    res.send('Master, your favorite has been erased from the archive memory.');
   });
 });
 
