@@ -16,12 +16,14 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(__dirname));
 
 
+// Set up mongoose schemas for database entry
 var Schema = mongoose.Schema;
 
 var swSchema = new Schema({ type: 'Mixed' }, { strict : false });
 var SWSchema = mongoose.model('SWSchema', swSchema);
 
 
+// Add new favorite to database
 app.post('/starwars', (req, res) => {
   SWSchema.create(new SWSchema(req.body), function(err, createdElement){
     if (err) throw err;
@@ -29,6 +31,7 @@ app.post('/starwars', (req, res) => {
   });
 });
 
+// Update favorite with notes
 app.post('/update', (req, res) => {
   let keys = Object.keys(req.body);
   let key = keys[0];
@@ -48,6 +51,7 @@ app.post('/update', (req, res) => {
   });
 });
 
+// delete favorite from database
 app.delete('/starwars', (req, res) => {
   SWSchema.remove(req.body, (err, data) => {
     if (err) throw err;
@@ -55,6 +59,7 @@ app.delete('/starwars', (req, res) => {
   });
 });
 
+// get favorites from database to display 
 app.get('/starwars', (req, res) => {
     SWSchema.find({}, (err, data) => {
         if (err) throw err;

@@ -12,3 +12,12 @@
   padding: 2px;
   text-align: center !important;
 }
+
+@mixin tile-buttons {
+  @include rounded;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  background-color: $droid-covering;
+  padding: 2px 5px;
+}

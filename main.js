@@ -184,13 +184,26 @@ $('#table').on( 'click', '.saveButton', function(e) {
     });
 });
 
-//GET request to favorites in database
+// GET request to favorites in database
 $('#displayFaves').click(() => {
+
+  // Conditional so function doesn't fire if favorites are already displayed
   if ($('#favorites').children().length > 1) {
     return false;
   }
-  $('#favorites').prepend(`<div id='faveHead'><h2 id='faveHeader'>Favorites</h2><button id='faveClose'>X</button></div><br>`);
+
   $.get('/starwars', (data, status) => {
+
+    // conditional to alert if user has no favorites
+    if (Object.keys(data) < 1) {
+      alert('Only a Sith Lord has no favorites!');
+      return false;
+    }
+
+    // append Header to favorites section with remove button
+    $('#favorites').prepend(`<div id='faveHead'><h2 id='faveHeader'>Favorites</h2><button id='faveClose'>X</button></div><br>`);
+
+      // Render each 'favorite' as tile holding table data, textarea for notes, and buttons to save notes and delete favorite from database
     data.forEach((ele) => {
       let arr = Object.keys(ele);
       $('#faveList').append(`<div class='flexEle'><div class='leftDiv'><table class='lastTable'></table></div><div class='rightDiv'><form class='textareaForm'><textarea class='notes' placeholder='Notes...'></textarea><a class='textSave' id='textareaSave'>Save</a><a class='delete'>X</a></form></div></div>`);
@@ -204,7 +217,7 @@ $('#displayFaves').click(() => {
 });
 
 
-//Save notes
+//Save notes to database
 $('#favorites').on( 'click', '#textareaSave', function(e) {
   let note = $(this).parent().find(".notes").val();
   let arr = $(this).parent().parent().parent().find('td');
@@ -214,8 +227,6 @@ $('#favorites').on( 'click', '#textareaSave', function(e) {
   let noteObj = {};
   noteObj[key] = val;
   noteObj['notes'] = note;
-
-  console.log('Note object to send', noteObj)
 
   $.ajax({
     method: 'POST',
@@ -236,7 +247,6 @@ $('#favorites').on( 'click', '#textareaSave', function(e) {
 // Remove favorite from database
 $('#favorites').on( 'click', '.delete', function(e) {
   let arr = $(this).parent().parent().parent().find('td');
- 
   let key = arr[0].innerText;
   let val = arr[1].innerText;
 
@@ -244,13 +254,14 @@ $('#favorites').on( 'click', '.delete', function(e) {
   dObj[key] = val;
 
   let name = dObj[key];
-  console.log('Object to delete', dObj)
 
   $.ajax({
     method: 'DELETE',
     url: '/starwars',
     data: dObj,
     success: (result) => {
+
+      // Remove deleted favorite tile from DOM
       $(this).parent().parent().parent().parent().find('div').first().remove();
       alert(`You've erased ${name} from the archive memory.`);
     },
@@ -263,7 +274,7 @@ $('#favorites').on( 'click', '.delete', function(e) {
   });
 });
 
-//REMOVE FAVORITES
+// Remove all favorites from DOM
 $('#favorites').on( 'click', '#faveClose', (e) => {
   $('#favorites').find('div').first().remove();
   $('#favorites').find('br').first().remove();

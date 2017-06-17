@@ -236,22 +236,12 @@ td {
       }
 
       .textSave {
-        @include rounded;
-        width: 100%;
-        text-align: center;
+        @include tile-buttons;
         margin-left: 5%;
-        margin-top: 10px;
-        background-color: $droid-covering;
-        padding: 2px 5px;
       }
       .delete {
-        @include rounded;
-        width: 100%;
-        text-align: center;
-        margin-top: 10px;
+        @include tile-buttons;
         margin-left: 30%;
-        background-color: $droid-covering;
-        padding: 2px 5px;
       }
     }
   }
