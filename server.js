@@ -39,10 +39,10 @@ app.put('/starwars', (req, res) => {
   let upKey = keys[1];
   let upVal = req.body[upKey];
 
-  let condition = {}
+  let condition = {};
   condition[key] = val;
   
-  let update = {}
+  let update = {};
   update[upKey] = upVal;
 
   SWSchema.update(condition, update, (err) => {
