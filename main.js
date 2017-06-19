@@ -194,8 +194,8 @@ $('#displayFaves').click(() => {
 
   $.get('/starwars', (data, status) => {
 
-    // conditional to alert if user has no favorites
-    if (Object.keys(data) < 1) {
+    //conditional to alert if user has no favorites
+    if (data.length < 1) {
       alert('Only a Sith Lord has no favorites!');
       return false;
     }
@@ -229,8 +229,8 @@ $('#favorites').on( 'click', '#textareaSave', function(e) {
   noteObj['notes'] = note;
 
   $.ajax({
-    method: 'POST',
-    url: '/update',
+    method: 'PUT',
+    url: '/starwars',
     data: noteObj,
     success: (result) => {
       alert('Been saved, your notes have.');
